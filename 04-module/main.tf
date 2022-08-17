@@ -1,13 +1,13 @@
 provider "aws" {
-  region = "us-west-1"
+  region = "ap-northeast-2"
 }
 
 module "vpc" {
   source  = "tedilabs/network/aws//modules/vpc"
   version = "0.24.0"
 
-  name                  = "fastcampus"
-  cidr_block            = "192.168.0.0/16"
+  name       = "fastcampus"
+  cidr_block = "10.0.0.0/16"
 
   internet_gateway_enabled = true
 
@@ -27,12 +27,12 @@ module "subnet_group__public" {
 
   subnets = {
     "${module.vpc.name}-public-001/az1" = {
-      cidr_block           = "192.168.0.0/24"
-      availability_zone_id = "usw1-az1"
+      cidr_block           = "10.0.0.0/24"
+      availability_zone_id = "apne2-az1"
     }
     "${module.vpc.name}-public-002/az2" = {
-      cidr_block           = "192.168.1.0/24"
-      availability_zone_id = "usw1-az3"
+      cidr_block           = "10.0.1.0/24"
+      availability_zone_id = "apne2-az2"
     }
   }
 
@@ -49,12 +49,12 @@ module "subnet_group__private" {
 
   subnets = {
     "${module.vpc.name}-private-001/az1" = {
-      cidr_block           = "192.168.10.0/24"
-      availability_zone_id = "usw1-az1"
+      cidr_block           = "10.0.10.0/24"
+      availability_zone_id = "apne2-az1"
     }
     "${module.vpc.name}-private-002/az2" = {
-      cidr_block           = "192.168.11.0/24"
-      availability_zone_id = "usw1-az3"
+      cidr_block           = "10.0.11.0/24"
+      availability_zone_id = "apne2-az2"
     }
   }
 

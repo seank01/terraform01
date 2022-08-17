@@ -79,12 +79,13 @@ module "security_group" {
 resource "aws_instance" "userdata" {
   ami           = data.aws_ami.ubuntu.image_id
   instance_type = "t2.micro"
-  key_name      = "fastcampus"
+  key_name      = "aws-ezcmc1"
 
   user_data = <<EOT
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install -y nginx
+echo "Hello World"
 EOT
 
   vpc_security_group_ids = [
@@ -118,6 +119,7 @@ EOT
 #     inline = [
 #       "sudo apt-get update",
 #       "sudo apt-get install -y nginx",
+#       "echo Hello World - EC2 Provison",
 #     ]
 #
 #     connection {
@@ -136,7 +138,7 @@ EOT
 resource "aws_instance" "provisioner" {
   ami           = data.aws_ami.ubuntu.image_id
   instance_type = "t2.micro"
-  key_name      = "fastcampus"
+  key_name      = "aws-ezcmc1"
 
   vpc_security_group_ids = [
     module.security_group.id,
@@ -155,7 +157,7 @@ resource "null_resource" "provisioner" {
   }
 
   provisioner "local-exec" {
-    command = "echo Hello World"
+    command = "echo Hello World 1st"
   }
 
   provisioner "file" {

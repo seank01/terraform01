@@ -11,7 +11,7 @@ variable "vpc_name" {
 locals {
   common_tags = {
     Project = "Network"
-    Owner   = "posquit0"
+    Owner   = "sieon2"
   }
 }
 

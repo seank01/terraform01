@@ -18,9 +18,9 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "ubuntu" {
+resource "aws_instance" "ubuntu2" {
   ami           = data.aws_ami.ubuntu.image_id
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
 
   tags = {
     Name = "fastcampus-ubuntu"

@@ -2,5 +2,5 @@ context: {}
 
 remote_states:
   "network":
-    organization: "fastcampus-devops"
+    organization: "seank03"
     workspace: "terraform-lab-network"

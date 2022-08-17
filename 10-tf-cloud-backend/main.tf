@@ -1,13 +1,22 @@
+/* terraform {
+  backend "s3" {
+    bucket  = "seank01-terraform"
+    key     = "s3-backend/terraform.tfstate"
+    region  = "ap-northeast-2"
+  }
+} */
+
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = "fastcampus-devops"
+    organization = "seank02"
 
     workspaces {
       name = "tf-cloud-backend"
     }
   }
 }
+
 
 provider "aws" {
   region = "ap-northeast-2"
